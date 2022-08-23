@@ -1,0 +1,31 @@
+<h1>Minhas Tarefas</h1>
+<div class="container">
+    {{#each afazeres}}
+    <div class="item">
+        <h2>{{this.tarefa}}</h2>
+        <p>{{this.descricao}}</p>
+        <div class="form-checkbox1">
+            {{#if this.concluida}}
+                <input type="checkbox" name="concluida" checked>
+            {{else}}
+                <input type="checkbox" name="concluida">
+            {{/if}}
+            <label for="concluida">Concluida</label>
+            
+            {{#if this.pendente}}
+                <input type="checkbox" name="pendente" checked>
+            {{else}}
+                <input type="checkbox" name="pendente">
+            {{/if}}
+            <label for="pendente">Pendente</label>
+        </div>
+        <div class="actions">
+            <a href="/afazer/{{this.id}}" class="details-btn">Ver</a>
+            <a href="/afazer/editar/{{this.id}}" class="edit-btn">Editar</a>
+            <form action="/afazer/deletar/{{this.id}}" method="POST">
+                <input type="submit" value="Excluir" class="delete-btn">
+            </form>
+        </div>
+    </div>
+    {{/each}}
+</div>
