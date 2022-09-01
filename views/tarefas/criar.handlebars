@@ -1,0 +1,17 @@
+<div id="criar">
+    <h1 id="title1">Crie sua Tarefa</h1>
+    <form action="/" method="POST">
+        <div class="form-control">
+            <label id="title2" for="titulo">Título:</label>
+            <textarea name="titulo" id="plc1" placeholder="O que você vai fazer?"></textarea>
+        </div>
+        <div class="form-control">
+            <label id="title2" for="descricao">Descrição:</label>
+            <textarea name="descricao" id="plc2" placeholder="Descreva a tarefa..."></textarea>
+        </div>
+        <input type="submit" id="button" value="Criar">
+    </form>
+    {{#if verificatarefa}}
+        <p id="erro">Por favor, insira um título para a sua tarefa.</p>
+    {{/if}}
+</div>

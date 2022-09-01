@@ -1,0 +1,64 @@
+<div id="home-header">
+    {{#if search}}
+        <h1 id="title1">Você está buscando por: <span id="busca">{{search}}</span></h1>
+        {{#if tarefasqty}}
+            <p>Foram encontradas <span id="busca">{{tarefasqty}}</span> tarefa(s)</p>
+        {{else}}
+            <p>Nenhuma tarefa foi encontrada para o termo <span id="busca">{{search}}</span></p>
+        {{/if}}
+    {{else}}
+        <h1 id="title1">Minhas Tarefas</h1>
+    {{/if}}
+    <form action="/tarefas" method="GET">
+        <input type="text" name="search" placeholder="Está buscando por algo?">
+        <input type="submit" class="button" value="Buscar">
+    </form>
+    <div id="order-container">
+        <a>Para limpar a pesquisa: </a>
+        <!--
+        <form action="/tarefas" method="GET">
+            <input type="hidden" name="search" value="{{this.search}}">
+            <input type="hidden" name="order" value="new">
+            <button type="submit"><i class="bi bi-arrow-up"></i></button>
+        </form>
+        <form action="/tarefas" method="GET">
+            <input type="hidden" name="search" value="{{this.search}}">
+            <input type="hidden" name="order" value="new">
+            <button type="submit"><i class="bi bi-arrow-down"></i></button>
+        </form>
+        -->
+        <a href="/tarefas"  id="link1">Clique aqui!</a>
+    </div>
+</div>
+<div class="container-tasks">
+     {{#each tarefas}}
+        <figure>
+            <div class="item">
+            {{#if this.validacao}}
+                <h2 id="feito">{{this.titulo}}</h2>
+            {{else}}
+                <h2 id="tit">{{this.titulo}}</h2>
+            {{/if}}
+            <div class="actions">
+            <a href="/tarefa/{{this.id}}"><i class="bi bi-eye"></i></a>
+            <!--
+            <form action="/validacao" method="POST">
+                <input type="hidden" name="id" value={{this.id}}>
+                <input type="hidden" name="validacao" value={{this.validacao}}>
+                <button type="submit">
+                    <i class="bi bi-check2-square"></i>
+                </button>
+            --->
+            </form>
+            <a href="/tarefa/editar/{{this.id}}"><i class="bi bi-pencil-square"></i></a>
+            <form action="/tarefas/remover" method="POST">
+                <input type="hidden" name="id" value={{this.id}}>
+                <button type="submit">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </form>
+            </div>
+            </div>
+        </figure>
+     {{/each}}
+</div>

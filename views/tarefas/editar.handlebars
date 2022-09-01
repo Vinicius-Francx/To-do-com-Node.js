@@ -1,0 +1,20 @@
+<div id="editar">
+    <h1 id="title1">Editando a tarefa: {{tarefa.titulo}}</h1>
+</div>
+<div id="criar">
+    <form action="/tarefa/editar" method="POST">
+        <input type="hidden" name="id" value="{{tarefa.id}}">
+        <div class="form-control">
+            <label id="title2" for="titulo">Título:</label>
+            <textarea name="titulo" id="plc1" maxlength="100">{{tarefa.titulo}}</textarea>
+        </div>
+        <div class="form-control">
+            <label id="title2" for="descricao">Descrição:</label>
+            <textarea name="descricao" id="plc2" maxlength="500">{{tarefa.descricao}}</textarea>
+        </div>
+        <input type="submit" id="button" value="Editar">
+    </form>
+    {{#if editatarefa}}
+        <p id="erro1">O título da tarefa não pode estar em branco. Por favor, tente novamente!</p>
+    {{/if}}
+</div>
